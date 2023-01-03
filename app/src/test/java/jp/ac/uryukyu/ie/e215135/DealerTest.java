@@ -7,8 +7,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DealerTest {
-    @Test void appHasAGreeting() {
-        Main classUnderTest = new Main();
-        assertNotNull(classUnderTest, "app should have a greeting");
+    @Test void checkDealer() {
+        Dealer dealer = new Dealer();
+        for (int i=0; i<2; i++){
+            dealer.dealCard(dealer);
+        }
+        assertEquals(2,dealer.getCards().size());
+        assertNotNull(dealer.getCards().get(0).getNum());
     }
 }

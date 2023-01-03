@@ -26,10 +26,18 @@ dependencies {
 
 application {
     // Define the main class for the application.
-    mainClass = 'jp.ac.uryukyu.ie.e215135.App'
+    mainClass = 'Main'
 }
 
 tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+}
+
+sourceCompatibility = 10
+
+jar {
+    manifest {
+        attributes  "Main-Class": "Main"
+    }
 }

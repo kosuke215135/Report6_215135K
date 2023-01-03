@@ -6,9 +6,8 @@ package jp.ac.uryukyu.ie.e215135;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainTest {
-    @Test void appHasAGreeting() {
-        Main classUnderTest = new Main();
-        assertNotNull(classUnderTest, "app should have a greeting");
-    }
-}
+// class MainTest {
+//     @Test void appHasAGreeting() {
+//         null;
+//     }
+// }

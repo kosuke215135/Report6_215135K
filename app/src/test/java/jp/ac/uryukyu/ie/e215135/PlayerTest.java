@@ -6,9 +6,14 @@ package jp.ac.uryukyu.ie.e215135;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-// class PlayerTest {
-//     @Test void appHasAGreeting() {
-//         Main classUnderTest = new Main();
-//         assertNotNull(classUnderTest, "app should have a greeting");
-//     }
-// }
+class PlayerTest {
+    @Test void checkPlayer() {
+        Dealer dealer = new Dealer();
+        Player player = new Player();
+        for (int i=0; i<2; i++){
+            dealer.dealCard(player);
+        }
+        player.hit();
+        assertEquals(3,player.getCards().size());
+    }
+}

@@ -12,4 +12,6 @@ public class Human {
     public ArrayList<Card> getCards(){
         return cards;
     }
+
+    
 }

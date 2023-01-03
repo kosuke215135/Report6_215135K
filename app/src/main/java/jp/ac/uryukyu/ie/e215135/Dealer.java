@@ -23,4 +23,36 @@ public class Dealer extends Human{
         human.setCard(handOutCard);
         deck.remove(randNum);
     }
+
+    public int calcOptimumNum(){
+        int sum = 0;
+        int oneCount = 0;
+        for (int i=0; i < this.getCards().size(); i++){
+            int cardNum = this.getCards().get(i).getNum();
+            if (cardNum == 1){
+                oneCount += 1;
+            }else if (cardNum > 10){
+                sum += 10;
+            }else{
+                sum += cardNum;
+            }
+        }
+        // Aが出たときの処理(1か11のより良い方をsumとする)
+        for (int i=0; i < oneCount; i++){
+            int plusOne = sum + 1; 
+            int plusEleven = sum + 11;
+            int diffPlusOne = 21-plusOne;
+            int diffPlusEleven = 21-plusEleven;
+            if (diffPlusOne >= 0 && diffPlusEleven >= 0){
+                sum = Math.max(plusOne,plusEleven);
+            }else if(diffPlusOne < 0 && diffPlusEleven >= 0){
+                sum = plusEleven;
+            }else if(diffPlusOne >= 0 && diffPlusEleven < 0){
+                sum = plusOne;
+            }else{
+                sum = plusOne;
+            }
+        }
+        return sum;
+    }
 }

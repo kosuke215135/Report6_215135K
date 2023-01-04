@@ -5,9 +5,31 @@ package jp.ac.uryukyu.ie.e215135;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
 
-// class GameMasterTest {
-//     @Test void appHasAGreeting() {
+class GameMasterTest {
+    @Test void TestCheckMatch() {
+        Player player = new Player();
+        Dealer dealer = new Dealer();
+        View view = new View();
         
-//     }
-// }
+        Card card1 = new Card(13, "♡");
+        Card card2 = new Card(10, "♡");
+        Card card3 = new Card(9, "♡");
+        player.setCard(card1);
+        player.setCard(card2);
+        GameMaster gameMaster = new GameMaster(player, dealer, view);
+        List<Integer> chooseOneToEleven = new ArrayList<Integer>();
+        gameMaster.checkMatch(chooseOneToEleven);
+        boolean ans = gameMaster.getContinueGame();
+        assertEquals(false, ans);
+
+        player.setCard(card3);
+        GameMaster gameMaster2 = new GameMaster(player, dealer, view);
+        gameMaster2.checkMatch();
+        boolean ans2 = gameMaster2.getContinueGame();
+        assertEquals(false,ans2);
+
+    }
+}

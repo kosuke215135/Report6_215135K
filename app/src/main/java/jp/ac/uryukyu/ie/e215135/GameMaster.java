@@ -8,9 +8,10 @@ public class GameMaster {
     private View view;
     private boolean continueGame = true;
 
-    public GameMaster(Player player, Dealer dealer){
+    public GameMaster(Player player, Dealer dealer, View view){
         this.player = player;
         this.dealer = dealer;
+        this.view = view;
     }
     //カードを引いて,21を越えたら終わり
     public void checkMatch(){
@@ -35,6 +36,7 @@ public class GameMaster {
                 view.winnerDisplay("Dealer");
             }
         }
+        continueGame = false;
     }
     public void gameProgress(){
         while (continueGame){
@@ -46,9 +48,11 @@ public class GameMaster {
             }else{
                 List<Integer> chooseOneToEleven = view.questionOneOrEleven();
                 checkMatch(chooseOneToEleven);
-                continueGame = false;
             }
         }
-
+    }
+    //テスト用
+    public boolean getContinueGame(){
+        return this.continueGame;
     }
 }

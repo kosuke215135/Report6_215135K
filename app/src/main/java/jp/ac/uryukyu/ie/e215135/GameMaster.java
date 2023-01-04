@@ -12,7 +12,15 @@ public class GameMaster {
         this.player = player;
         this.dealer = dealer;
         this.view = view;
+        //最初のカードを配る
+        for (int i=0; i < 2; i++){
+            this.dealer.dealCard(player);
+        }
+        for (int i=0; i < 2; i++){
+            this.dealer.dealCard(dealer);
+        }
     }
+
     //カードを引いて,21を越えたら終わり
     public void checkMatch(){
         int playerNum = player.calcMinNum();

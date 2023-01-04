@@ -29,7 +29,8 @@ public class View {
             Card playerCard = playerCards.get(i); 
             int cardNum = playerCard.getNum();
             if (cardNum == 1){
-                System.out.println(i+"番目のAは1と11のどちらとして計算しますか？");
+                int cardIndex = i+1;
+                System.out.println("左から"+cardIndex+"番目のAは1と11のどちらとして計算しますか？");
                 System.out.println("1: 1として計算する");
                 System.out.println("11: 11として計算する");
                 Scanner scanner = new Scanner(System.in);

@@ -25,6 +25,7 @@ public class GameMaster {
     public void checkNumOver(){
         int playerNum = player.calcMinNum();
         if (playerNum > 21){
+            System.out.println("21を超えてしまいました");
             view.winnerDisplay("Dealer");
             String playerDisplay = getCardInformation(player);
             String dealerDisplay = getCardInformation(dealer);

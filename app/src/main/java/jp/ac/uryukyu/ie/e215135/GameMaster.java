@@ -1,6 +1,6 @@
 package jp.ac.uryukyu.ie.e215135;
 import java.util.List;
-
+import java.util.ArrayList;
 
 public class GameMaster {
     private Player player;
@@ -18,6 +18,9 @@ public class GameMaster {
         int playerNum = player.calcMinNum();
         if (playerNum > 21){
             view.winnerDisplay("Dealer");
+            String playerDisplay = getCardInformation(player);
+            String dealerDisplay = getCardInformation(dealer);
+            this.view.fieldDisplay(playerDisplay, dealerDisplay);
             continueGame = false;
         }
     }
@@ -36,17 +39,51 @@ public class GameMaster {
                 view.winnerDisplay("Dealer");
             }
         }
+        String playerDisplay = getCardInformation(player);
+        String dealerDisplay = getCardInformation(dealer);
+        this.view.fieldDisplay(playerDisplay, dealerDisplay);
         continueGame = false;
     }
+    public String getCardInformation(Human human){
+        ArrayList<Card> humanCards = human.getCards();
+        String humanDisplay = ""; 
+        for (int i=0; i < humanCards.size(); i++){
+            Card card = humanCards.get(i);
+            int cardNum = card.getNum();
+            Integer cardNumInteger = Integer.valueOf(cardNum);
+            String cardNumString = cardNumInteger.toString();
+            String cardMark = card.getMark();
+            humanDisplay += cardNumString+cardMark+" ";
+        }
+        return humanDisplay;
+    }
+    public String getDealerCardInformation(Dealer dealer){
+        ArrayList<Card> dealerCards = dealer.getCards();
+        String dealerDisplay = "?? "; 
+        Card card = dealerCards.get(1);
+        int cardNum = card.getNum();
+        Integer cardNumInteger = Integer.valueOf(cardNum);
+        String cardNumString = cardNumInteger.toString();
+        String cardMark = card.getMark();
+        dealerDisplay += cardNumString+cardMark+" ";
+        return dealerDisplay;
+    }
+
+
     public void gameProgress(){
         while (continueGame){
-            this.view.fieldDisplay();
-            int HitOrStay = this.view.questionHitOrStay();
+            String playerDisplay = getCardInformation(player);
+            String dealerDisplay = getDealerCardInformation(dealer);
+            this.view.fieldDisplay(playerDisplay, dealerDisplay);
+            int HitOrStay;
+            do {
+                HitOrStay = this.view.questionHitOrStay();
+            }while(HitOrStay == -100);
             if (HitOrStay == 0){
                 this.dealer.dealCard(this.player);
                 checkMatch();
             }else{
-                List<Integer> chooseOneToEleven = view.questionOneOrEleven();
+                List<Integer> chooseOneToEleven = view.questionOneOrEleven(this.player);
                 checkMatch(chooseOneToEleven);
             }
         }

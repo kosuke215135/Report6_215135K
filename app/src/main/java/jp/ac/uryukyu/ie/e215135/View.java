@@ -16,7 +16,7 @@ public class View {
         System.out.println("1: 勝負する");
         Scanner scanner = new Scanner(System.in);
         int input = scanner.nextInt();
-        if (input == 0 || input == 1){
+        if (!(input == 0 || input == 1)){
             System.out.println("入力が間違っています");
             return -100;
         }

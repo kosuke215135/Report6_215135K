@@ -27,7 +27,7 @@ class GameMasterTest {
 
         player.setCard(card3);
         GameMaster gameMaster2 = new GameMaster(player, dealer, view);
-        gameMaster2.checkMatch();
+        gameMaster2.checkNumOver();
         boolean ans2 = gameMaster2.getContinueGame();
         assertEquals(false,ans2);
 

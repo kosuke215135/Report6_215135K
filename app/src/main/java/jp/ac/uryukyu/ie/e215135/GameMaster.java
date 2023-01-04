@@ -22,7 +22,7 @@ public class GameMaster {
     }
 
     //カードを引いて,21を越えたら終わり
-    public void checkMatch(){
+    public void checkNumOver(){
         int playerNum = player.calcMinNum();
         if (playerNum > 21){
             view.winnerDisplay("Dealer");
@@ -41,7 +41,7 @@ public class GameMaster {
         }else{
             int diffplayer = 21 - playerNum;
             int diffdealer = 21 - dealerNum;
-            if (diffplayer >= diffdealer){
+            if (diffplayer <= diffdealer){
                 view.winnerDisplay("Player");
             }else{
                 view.winnerDisplay("Dealer");
@@ -77,7 +77,6 @@ public class GameMaster {
         return dealerDisplay;
     }
 
-
     public void gameProgress(){
         while (continueGame){
             String playerDisplay = getCardInformation(player);
@@ -89,7 +88,7 @@ public class GameMaster {
             }while(HitOrStay == -100);
             if (HitOrStay == 0){
                 this.dealer.dealCard(this.player);
-                checkMatch();
+                checkNumOver();
             }else{
                 List<Integer> chooseOneToEleven = view.questionOneOrEleven(this.player);
                 checkMatch(chooseOneToEleven);

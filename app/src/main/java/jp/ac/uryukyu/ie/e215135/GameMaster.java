@@ -112,7 +112,7 @@ public class GameMaster {
             do {
                 HitOrStay = this.view.questionHitOrStay();
             }while(HitOrStay == -100);
-            if (HitOrStay == 0){
+            if (HitOrStay == 1){
                 this.dealer.dealCard(this.player);
                 checkNumOver();
             }else{

@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class View {
+    Scanner scanner;
+
     public void fieldDisplay(String playerDisplay, String dealerDisplay){
         System.out.println("Dealerの手札");
         System.out.println(dealerDisplay);
@@ -12,12 +14,12 @@ public class View {
     }
     public int questionHitOrStay(){
         System.out.println("番号を選択してください");
-        System.out.println("0: カードを1枚引く");
-        System.out.println("1: 勝負する");
-        Scanner scanner = new Scanner(System.in);
+        System.out.println("1: カードを1枚引く");
+        System.out.println("2: 勝負する");
+        scanner = new Scanner(System.in);
         try{
             int input = scanner.nextInt();
-            if (!(input == 0 || input == 1)){
+            if (!(input == 1 || input == 2)){
                 System.out.println("入力が間違っています");
                 return -100;
             }else {
@@ -39,7 +41,7 @@ public class View {
                 System.out.println("左から"+cardIndex+"番目のAは1と11のどちらとして計算しますか？");
                 System.out.println("1: 1として計算する");
                 System.out.println("11: 11として計算する");
-                Scanner scanner = new Scanner(System.in);
+                scanner = new Scanner(System.in);
                 try{
                     int input = scanner.nextInt();
                     if (input == 11){

@@ -3,15 +3,29 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+* ターミナルに表示し、入力を受け付けるためのクラス
+*/
 public class View {
     Scanner scanner;
 
+    /**
+    * PlayerとDealerの手札を表示する
+    * @param playerDisplay 表示させたいPlayerの手札
+    * @param dealerDisplay 表示させたいDealerの手札
+    */
     public void fieldDisplay(String playerDisplay, String dealerDisplay){
         System.out.println("Dealerの手札");
         System.out.println(dealerDisplay);
         System.out.println("あなたの手札");
         System.out.println(playerDisplay);
     }
+
+    /**
+    * Playerの行動を選択させる
+    * カードを1枚引くか勝負するかを選択することが可能
+    * @return 選択番号(1,2,-100) -100は入力が間違っている場合
+    */
     public int questionHitOrStay(){
         System.out.println("番号を選択してください");
         System.out.println("1: カードを1枚引く");
@@ -30,6 +44,12 @@ public class View {
             return -100;
         }
     }
+
+    /**
+    * Aを1として計算するか,11として計算するか決める
+    * @param player Player
+    * @return 11として扱うカードのカード番号が入った配列
+    */
     public List<Integer> questionOneOrEleven(Player player){
         List<Integer> ajustA= new ArrayList<Integer>();
         ArrayList<Card> playerCards = player.getCards();
@@ -61,6 +81,11 @@ public class View {
         }
         return ajustA;
     }
+
+    /**
+    * 勝敗がついたときのコメントを表示する
+    * @param winner 勝者
+    */
     public void winnerDisplay(String winner){
         if (winner == "Player"){
             System.out.println("あなたの勝利です!! おめでとうございます!!");

@@ -2,9 +2,16 @@ package jp.ac.uryukyu.ie.e215135;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+* カードを配る対戦相手
+*/
 public class Dealer extends Human{
     ArrayList<Card> deck = new ArrayList<>();
 
+    /**
+    * コンストラクタ
+    * トランプを52枚用意してデッキにする
+    */
     public Dealer(){
         int[] numbers = {1,2,3,4,5,6,7,8,9,10,11,12,13};
         String[] marks = {"♡", "♢", "♤", "♧"};
@@ -16,6 +23,10 @@ public class Dealer extends Human{
         }
     }
 
+    /**
+    * カード1枚を対象の相手に配る
+    * @param human 配る相手
+    */
     public void dealCard(Human human){
         Random rand = new Random();
         int randNum = rand.nextInt(deck.size());
@@ -24,6 +35,11 @@ public class Dealer extends Human{
         deck.remove(randNum);
     }
 
+    /**
+    * ディーラーの点数を計算する
+    * Aが手札にあった場合はより良い点数を採用する
+    * @return Dealerの点数
+    */
     public int calcOptimumNum(){
         int sum = 0;
         int oneCount = 0;

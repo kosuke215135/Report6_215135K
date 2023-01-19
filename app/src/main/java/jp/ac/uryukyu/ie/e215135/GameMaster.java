@@ -20,6 +20,19 @@ public class GameMaster {
             this.dealer.dealCard(dealer);
         }
     }
+    //test用のコンストラクタ(カードをtest側で指定できるようにするため)
+    public GameMaster(Player player, Dealer dealer, View view, boolean test){
+        this.player = player;
+        this.dealer = dealer;
+        this.view = view;
+        //最初のカードを配る
+        // for (int i=0; i < 2; i++){
+        //     this.dealer.dealCard(player);
+        // }
+        // for (int i=0; i < 2; i++){
+        //     this.dealer.dealCard(dealer);
+        // }
+    }
 
     //カードを引いて,21を越えたら終わり
     public void checkNumOver(){

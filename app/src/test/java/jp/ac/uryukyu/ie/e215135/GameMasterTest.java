@@ -15,11 +15,11 @@ class GameMasterTest {
         View view = new View();
         
         Card card1 = new Card(13, "♡");
-        Card card2 = new Card(10, "♡");
+        Card card2 = new Card(1, "♡");
         Card card3 = new Card(9, "♡");
         player.setCard(card1);
         player.setCard(card2);
-        GameMaster gameMaster = new GameMaster(player, dealer, view);
+        GameMaster gameMaster = new GameMaster(player, dealer, view, true);
         List<Integer> chooseOneToEleven = new ArrayList<Integer>();
         gameMaster.checkMatch(chooseOneToEleven);
         boolean ans = gameMaster.getContinueGame();

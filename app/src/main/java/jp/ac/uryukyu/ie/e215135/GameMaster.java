@@ -55,16 +55,27 @@ public class GameMaster {
     }
     public String getCardInformation(Human human){
         ArrayList<Card> humanCards = human.getCards();
-        String humanDisplay = ""; 
+        String humanCardsDisplay = ""; 
         for (int i=0; i < humanCards.size(); i++){
             Card card = humanCards.get(i);
             int cardNum = card.getNum();
             Integer cardNumInteger = Integer.valueOf(cardNum);
-            String cardNumString = cardNumInteger.toString();
+            String cardNumString;
+            if (cardNumInteger == 1) {
+                cardNumString = "A";
+            } else if (cardNumInteger == 11) {
+                cardNumString = "J";
+            } else if (cardNumInteger == 12) {
+                cardNumString = "Q";
+            } else if (cardNumInteger == 13) {
+                cardNumString = "K";
+            }else{
+                cardNumString = cardNumInteger.toString();
+            }
             String cardMark = card.getMark();
-            humanDisplay += cardNumString+cardMark+" ";
+            humanCardsDisplay += cardNumString+cardMark+" ";
         }
-        return humanDisplay;
+        return humanCardsDisplay;
     }
     public String getDealerCardInformation(Dealer dealer){
         ArrayList<Card> dealerCards = dealer.getCards();

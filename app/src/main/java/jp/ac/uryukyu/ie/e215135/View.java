@@ -15,12 +15,18 @@ public class View {
         System.out.println("0: カードを1枚引く");
         System.out.println("1: 勝負する");
         Scanner scanner = new Scanner(System.in);
-        int input = scanner.nextInt();
-        if (!(input == 0 || input == 1)){
-            System.out.println("入力が間違っています");
+        try{
+            int input = scanner.nextInt();
+            if (!(input == 0 || input == 1)){
+                System.out.println("入力が間違っています");
+                return -100;
+            }else {
+                return input;
+            }
+        } catch(Exception e) {
+            System.out.println("数字で入力してください");
             return -100;
         }
-        return input;
     }
     public List<Integer> questionOneOrEleven(Player player){
         List<Integer> ajustA= new ArrayList<Integer>();
@@ -34,9 +40,20 @@ public class View {
                 System.out.println("1: 1として計算する");
                 System.out.println("11: 11として計算する");
                 Scanner scanner = new Scanner(System.in);
-                int input = scanner.nextInt();
-                if (input == 11){
-                    ajustA.add(i);
+                try{
+                    int input = scanner.nextInt();
+                    if (input == 11){
+                        ajustA.add(i);
+                    }
+                    if (input == 11 || input == 1){
+                        break;
+                    } else {
+                        System.out.println("入力が正しくありません");
+                        ajustA.add(-100);
+                    }
+                }catch(Exception e){
+                    System.out.println("数字で入力してください");
+                    ajustA.add(-100);
                 }
             }
         }

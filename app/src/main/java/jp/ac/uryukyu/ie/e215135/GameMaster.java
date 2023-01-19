@@ -95,6 +95,7 @@ public class GameMaster {
             String dealerDisplay = getDealerCardInformation(dealer);
             this.view.fieldDisplay(playerDisplay, dealerDisplay);
             int HitOrStay;
+            //questionHitOrStay()で正しい入力があったか確認する
             do {
                 HitOrStay = this.view.questionHitOrStay();
             }while(HitOrStay == -100);
@@ -102,7 +103,20 @@ public class GameMaster {
                 this.dealer.dealCard(this.player);
                 checkNumOver();
             }else{
-                List<Integer> chooseOneToEleven = view.questionOneOrEleven(this.player);
+                List<Integer> chooseOneToEleven;
+                int countNotCorrectInput;
+                //questionOneOrEleven(this.player)で正しい入力があったか確認する
+                do{
+                    countNotCorrectInput = 0;
+                    chooseOneToEleven = view.questionOneOrEleven(this.player);
+                    for (int i=0; i < chooseOneToEleven.size(); i++){
+                        int checkNegative = chooseOneToEleven.get(i);
+                        if (checkNegative == -100){
+                            countNotCorrectInput += 1;
+                        }
+                    }
+                }while(countNotCorrectInput > 0);
+
                 checkMatch(chooseOneToEleven);
             }
         }

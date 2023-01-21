@@ -1,5 +1,4 @@
 package jp.ac.uryukyu.ie.e215135;
-import java.util.List;
 import java.util.ArrayList;
 
 /**
@@ -58,11 +57,14 @@ public class GameMaster {
     */
     public void checkNumOver(){
         int playerNum = player.calcMinNum();
+        int dealerNum = dealer.calcOptimumNum();
         if (playerNum > 21){
             System.out.println("21を超えてしまいました");
             view.winnerDisplay("Dealer");
             String playerDisplay = getCardInformation(player);
             String dealerDisplay = getCardInformation(dealer);
+            playerDisplay += "  合計:"+playerNum;
+            dealerDisplay += "  合計:"+dealerNum;
             this.view.fieldDisplay(playerDisplay, dealerDisplay);
             continueGame = false;
         }
@@ -73,7 +75,7 @@ public class GameMaster {
     * 同点の場合はPlayer側の勝利とする
     * @param chooseOneToEleven 11として扱うカードのカード番号が入った配列
     */
-    public void checkMatch(List<Integer> chooseOneToEleven){
+    public void checkMatch(ArrayList<Integer> chooseOneToEleven){
         int playerNum = player.calcNum(chooseOneToEleven);
         int dealerNum = dealer.calcOptimumNum();
         if (playerNum > 21){
@@ -89,6 +91,8 @@ public class GameMaster {
         }
         String playerDisplay = getCardInformation(player);
         String dealerDisplay = getCardInformation(dealer);
+        playerDisplay += "  合計:"+playerNum;
+        dealerDisplay += "  合計:"+dealerNum;
         this.view.fieldDisplay(playerDisplay, dealerDisplay);
         continueGame = false;
     }
@@ -159,7 +163,7 @@ public class GameMaster {
                 this.dealer.dealCard(this.player);
                 checkNumOver();
             }else{
-                List<Integer> chooseOneToEleven;
+                ArrayList<Integer> chooseOneToEleven;
                 int countNotCorrectInput;
                 //questionOneOrEleven(this.player)で正しい入力があったか確認する
                 do{

@@ -6,7 +6,6 @@ package jp.ac.uryukyu.ie.e215135;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
-import java.util.List;
 
 class GameMasterTest {
     @Test void TestCheckMatch() {
@@ -20,7 +19,7 @@ class GameMasterTest {
         player.setCard(card1);
         player.setCard(card2);
         GameMaster gameMaster = new GameMaster(player, dealer, view, true);
-        List<Integer> chooseOneToEleven = new ArrayList<Integer>();
+        ArrayList<Integer> chooseOneToEleven = new ArrayList<>();
         gameMaster.checkMatch(chooseOneToEleven);
         boolean ans = gameMaster.getContinueGame();
         assertEquals(false, ans);

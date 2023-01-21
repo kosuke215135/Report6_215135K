@@ -1,6 +1,5 @@
 package jp.ac.uryukyu.ie.e215135;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -50,8 +49,8 @@ public class View {
     * @param player Player
     * @return 11として扱うカードのカード番号が入った配列
     */
-    public List<Integer> questionOneOrEleven(Player player){
-        List<Integer> ajustA= new ArrayList<Integer>();
+    public ArrayList<Integer> questionOneOrEleven(Player player){
+        ArrayList<Integer> ajustA= new ArrayList<>();
         ArrayList<Card> playerCards = player.getCards();
         for (int i=0; i < playerCards.size(); i++){
             Card playerCard = playerCards.get(i); 

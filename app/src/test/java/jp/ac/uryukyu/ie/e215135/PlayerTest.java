@@ -6,7 +6,6 @@ package jp.ac.uryukyu.ie.e215135;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
-import java.util.List;
 
 class PlayerTest {
     @Test void checkPlayer() {
@@ -16,7 +15,7 @@ class PlayerTest {
         Card card2 = new Card(5, "♡");
         player.setCard(card1);
         player.setCard(card2);
-        List<Integer> listA = new ArrayList<Integer>();
+        ArrayList<Integer> listA = new ArrayList<>();
         int ans = player.calcNum(listA);
         assertEquals(7,ans);
         

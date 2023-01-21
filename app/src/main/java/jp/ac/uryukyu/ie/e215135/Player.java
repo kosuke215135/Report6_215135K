@@ -1,6 +1,5 @@
 package jp.ac.uryukyu.ie.e215135;
-import java.util.List;
-
+import java.util.ArrayList;
 /**
 * Playerのクラス
 */
@@ -12,7 +11,7 @@ public class Player extends Human{
     * @param chooseOneToEleven 11として扱うカードのカード番号が入った配列
     * @return Playerの点数
     */
-    public int calcNum(List<Integer> chooseOneToEleven){
+    public int calcNum(ArrayList<Integer> chooseOneToEleven){
         int sum = 0;
         for (int i=0; i < this.getCards().size(); i++){
             int cardNum = this.getCards().get(i).getNum();
